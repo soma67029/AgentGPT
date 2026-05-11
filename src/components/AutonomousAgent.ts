@@ -145,12 +145,17 @@ class AutonomousAgent {
       if (!env.NEXT_PUBLIC_FF_MOCK_MODE_ENABLED) {
         await testConnection(this.modelSettings);
       }
-      return await AgentService.startGoalAgent(this.modelSettings, this.goal);
+      return await AgentService.startGoalAgent(
+        this.modelSettings,
+        this.goal,
+        this.name
+      );
     }
 
     const data = {
       modelSettings: this.modelSettings,
       goal: this.goal,
+      name: this.name,
     };
     const res = await this.post(`/api/agent/start`, data);
 
@@ -169,7 +174,8 @@ class AutonomousAgent {
         this.tasks,
         currentTask,
         result,
-        this.completedTasks
+        this.completedTasks,
+        this.name
       );
     }
 
@@ -180,6 +186,7 @@ class AutonomousAgent {
       lastTask: currentTask,
       result: result,
       completedTasks: this.completedTasks,
+      name: this.name,
     };
     const res = await this.post(`/api/agent/create`, data);
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument,@typescript-eslint/no-unsafe-member-access
@@ -191,7 +198,8 @@ class AutonomousAgent {
       return await AgentService.executeTaskAgent(
         this.modelSettings,
         this.goal,
-        task
+        task,
+        this.name
       );
     }
 
@@ -199,6 +207,7 @@ class AutonomousAgent {
       modelSettings: this.modelSettings,
       goal: this.goal,
       task: task,
+      name: this.name,
     };
     const res = await this.post("/api/agent/execute", data);
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-argument
