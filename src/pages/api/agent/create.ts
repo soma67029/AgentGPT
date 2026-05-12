@@ -9,8 +9,15 @@ export const config = {
 
 const handler = async (request: NextRequest) => {
   try {
-    const { modelSettings, goal, tasks, lastTask, result, completedTasks } =
-      (await request.json()) as RequestBody;
+    const {
+      modelSettings,
+      goal,
+      tasks,
+      lastTask,
+      result,
+      completedTasks,
+      name,
+    } = (await request.json()) as RequestBody;
 
     if (tasks === undefined || lastTask === undefined || result === undefined) {
       return;
@@ -22,7 +29,8 @@ const handler = async (request: NextRequest) => {
       tasks,
       lastTask,
       result,
-      completedTasks
+      completedTasks,
+      name
     );
 
     return NextResponse.json({ newTasks });

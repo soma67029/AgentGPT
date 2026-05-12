@@ -20,13 +20,16 @@ import { env } from "../env/client.mjs";
 import { api } from "../utils/api";
 import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
+import { geospatialTemplates } from "../utils/templates";
 
 const Drawer = ({
   showHelp,
   showSettings,
+  onTemplateSelect,
 }: {
   showHelp: () => void;
   showSettings: () => void;
+  onTemplateSelect?: (name: string, goal: string) => void;
 }) => {
   const [t] = useTranslation();
   const [showDrawer, setShowDrawer] = useState(true);
@@ -93,7 +96,7 @@ const Drawer = ({
       >
         <div className="flex flex-col gap-1 overflow-hidden">
           <div className="mb-2 flex justify-center gap-2">
-            My Agent(s)
+            Geospatial Templates & Agents
             <button
               className={clsx(
                 showDrawer ? "-translate-x-2" : "translate-x-12",
@@ -105,6 +108,26 @@ const Drawer = ({
             </button>
           </div>
           <ul className="flex flex-col gap-2 overflow-auto">
+            {geospatialTemplates.map((template, index) => (
+              <DrawerItem
+                key={`template-${index}`}
+                icon={<FaRocket className="text-blue-400" />}
+                text={template.name}
+                className="w-full"
+                onClick={() => {
+                  if (onTemplateSelect) {
+                    onTemplateSelect(template.name, template.goal);
+                  } else {
+                    void router.push(
+                      `/?name=${encodeURIComponent(
+                        template.name
+                      )}&goal=${encodeURIComponent(template.goal)}`
+                    );
+                  }
+                }}
+              />
+            ))}
+            <hr className="my-2 border-gray-600/10" />
             {userAgents.map(
               (agent: any | undefined, index: any | undefined) => (
                 <DrawerItem

@@ -8,7 +8,7 @@ import { api } from "../../utils/api";
 import ChatWindow from "../../components/ChatWindow";
 import type { Message } from "../../types/agentTypes";
 import Toast from "../../components/toast";
-import { FaTrash, FaShare, FaBackspace } from "react-icons/fa";
+import { FaTrash, FaShare, FaBackspace, FaClone } from "react-icons/fa";
 import { env } from "../../env/client.mjs";
 
 import { useTranslation } from 'react-i18next';
@@ -59,6 +59,21 @@ const AgentPage: NextPage = () => {
           enabledClassName={"bg-green-600 hover:bg-green-400"}
         >
           Share
+        </Button>
+        <Button
+          icon={<FaClone />}
+          onClick={() => {
+            if (getAgent.data) {
+              void router.push(
+                `/?name=${encodeURIComponent(
+                  getAgent.data.name
+                )}&goal=${encodeURIComponent(getAgent.data.goal)}`
+              );
+            }
+          }}
+          enabledClassName={"bg-blue-600 hover:bg-blue-400"}
+        >
+          Clone
         </Button>
         <Button
           icon={<FaTrash />}

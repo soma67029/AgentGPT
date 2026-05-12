@@ -9,12 +9,17 @@ import { env } from "../env/client.mjs";
 import { LLMChain } from "langchain/chains";
 import { extractTasks } from "../utils/helpers";
 
-async function startGoalAgent(modelSettings: ModelSettings, goal: string) {
+async function startGoalAgent(
+  modelSettings: ModelSettings,
+  goal: string,
+  name = "AgentGPT"
+) {
   const completion = await new LLMChain({
     llm: createModel(modelSettings),
     prompt: startGoalPrompt,
   }).call({
     goal,
+    name,
   });
   console.log("Completion:" + (completion.text as string));
   return extractTasks(completion.text as string, []);
@@ -23,7 +28,8 @@ async function startGoalAgent(modelSettings: ModelSettings, goal: string) {
 async function executeTaskAgent(
   modelSettings: ModelSettings,
   goal: string,
-  task: string
+  task: string,
+  name = "AgentGPT"
 ) {
   const completion = await new LLMChain({
     llm: createModel(modelSettings),
@@ -31,6 +37,7 @@ async function executeTaskAgent(
   }).call({
     goal,
     task,
+    name,
   });
 
   return completion.text as string;
@@ -42,7 +49,8 @@ async function createTasksAgent(
   tasks: string[],
   lastTask: string,
   result: string,
-  completedTasks: string[] | undefined
+  completedTasks: string[] | undefined,
+  name = "AgentGPT"
 ) {
   const completion = await new LLMChain({
     llm: createModel(modelSettings),
@@ -52,6 +60,7 @@ async function createTasksAgent(
     tasks,
     lastTask,
     result,
+    name,
   });
 
   return extractTasks(completion.text as string, completedTasks || []);
@@ -60,12 +69,14 @@ async function createTasksAgent(
 interface AgentService {
   startGoalAgent: (
     modelSettings: ModelSettings,
-    goal: string
+    goal: string,
+    name?: string
   ) => Promise<string[]>;
   executeTaskAgent: (
     modelSettings: ModelSettings,
     goal: string,
-    task: string
+    task: string,
+    name?: string
   ) => Promise<string>;
   createTasksAgent: (
     modelSettings: ModelSettings,
@@ -73,7 +84,8 @@ interface AgentService {
     tasks: string[],
     lastTask: string,
     result: string,
-    completedTasks: string[] | undefined
+    completedTasks: string[] | undefined,
+    name?: string
   ) => Promise<string[]>;
 }
 

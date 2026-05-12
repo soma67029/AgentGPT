@@ -21,10 +21,12 @@ import { useAgent } from "../hooks/useAgent";
 import { isEmptyOrBlank } from "../utils/whitespace";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useSettings } from "../hooks/useSettings";
+import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
   const [t] = useTranslation();
   const { session, status } = useAuth();
+  const router = useRouter();
   const [name, setName] = React.useState<string>("");
   const [goalInput, setGoalInput] = React.useState<string>("");
   const [agent, setAgent] = React.useState<AutonomousAgent | null>(null);
@@ -54,6 +56,18 @@ const Home: NextPage = () => {
   useEffect(() => {
     nameInputRef?.current?.focus();
   }, []);
+
+  useEffect(() => {
+    if (router.isReady) {
+      const { name, goal } = router.query;
+      if (typeof name === "string") {
+        setName(name);
+      }
+      if (typeof goal === "string") {
+        setGoalInput(goal);
+      }
+    }
+  }, [router.isReady, router.query]);
 
   useEffect(() => {
     if (agent == null) {
@@ -130,6 +144,10 @@ const Home: NextPage = () => {
         <Drawer
           showHelp={() => setShowHelpDialog(true)}
           showSettings={() => setShowSettingsDialog(true)}
+          onTemplateSelect={(name, goal) => {
+            setName(name);
+            setGoalInput(goal);
+          }}
         />
         <div
           id="content"
