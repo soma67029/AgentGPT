@@ -25,7 +25,7 @@ import { useSettings } from "../hooks/useSettings";
 const Home: NextPage = () => {
   const [t] = useTranslation();
   const { session, status } = useAuth();
-  const [name, setName] = React.useState<string>("");
+  const [name, setName] = React.useState<string>("JARVIS");
   const [goalInput, setGoalInput] = React.useState<string>("");
   const [agent, setAgent] = React.useState<AutonomousAgent | null>(null);
   const { settings, saveSettings } = useSettings();
@@ -218,7 +218,7 @@ const Home: NextPage = () => {
                   value={goalInput}
                   onChange={(e) => setGoalInput(e.target.value)}
                   onKeyDown={(e) => handleKeyPress(e)}
-                  placeholder={`${t("Make the world a better place.")}`}
+                  placeholder={`${t("Help me manage my armor systems.")}`}
                   type="textarea"
                 />
               </Expand>

@@ -9,8 +9,12 @@ export const config = {
 
 const handler = async (request: NextRequest) => {
   try {
-    const { modelSettings, goal } = (await request.json()) as RequestBody;
-    const newTasks = await AgentService.startGoalAgent(modelSettings, goal);
+    const { modelSettings, goal, name } = (await request.json()) as RequestBody;
+    const newTasks = await AgentService.startGoalAgent(
+      modelSettings,
+      goal,
+      name ?? "AgentGPT"
+    );
     return NextResponse.json({ newTasks });
   } catch (e) {}
 
