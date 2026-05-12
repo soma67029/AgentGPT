@@ -1,0 +1,67 @@
+
+> agent-gpt@0.2.0 dev
+> next dev
+
+(node:63726) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Watchpack Error (watcher): Error: EACCES: permission denied, watch '/etc/credstore'
+Watchpack Error (watcher): Error: EACCES: permission denied, watch '/etc/credstore.encrypted'
+(node:63738) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Watchpack Error (watcher): Error: EACCES: permission denied, watch '/opt/containerd'
+Watchpack Error (watcher): Error: EACCES: permission denied, watch '/home/ubuntu'
+Watchpack Error (watcher): Error: EACCES: permission denied, watch '/root/.launchpadlib'
+Watchpack Error (watcher): Error: EACCES: permission denied, watch '/root/.ssh'
+Watchpack Error (watcher): Error: EACCES: permission denied, watch '/run/containerd'
+Watchpack Error (watcher): Error: EACCES: permission denied, watch '/run/docker'
+Watchpack Error (watcher): Error: EACCES: permission denied, watch '/run/sudo'
+Watchpack Error (watcher): Error: EACCES: permission denied, watch '/tmp/systemd-private-368a2f928fdb4f8189931ac81a2e3759-systemd-logind.service-WPO75P'
+Watchpack Error (initial scan): Error: EACCES: permission denied, scandir '/etc/credstore.encrypted'
+Watchpack Error (initial scan): Error: EACCES: permission denied, scandir '/etc/credstore'
+Watchpack Error (initial scan): Error: EACCES: permission denied, scandir '/opt/containerd'
+Watchpack Error (initial scan): Error: EACCES: permission denied, scandir '/home/ubuntu'
+Watchpack Error (initial scan): Error: EACCES: permission denied, scandir '/root/.launchpadlib'
+Watchpack Error (initial scan): Error: EACCES: permission denied, scandir '/root/.ssh'
+Watchpack Error (initial scan): Error: EACCES: permission denied, scandir '/run/containerd'
+Watchpack Error (initial scan): Error: EACCES: permission denied, scandir '/run/docker'
+Watchpack Error (initial scan): Error: EACCES: permission denied, scandir '/run/sudo'
+Watchpack Error (initial scan): Error: EACCES: permission denied, scandir '/tmp/systemd-private-368a2f928fdb4f8189931ac81a2e3759-systemd-logind.service-WPO75P'
+[32mready[39m - started server on 0.0.0.0:3000, url: http://localhost:3000
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+[35mevent[39m - compiled client and server successfully in 3.4s (343 modules)
+[35m[1mAttention[22m[39m: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+[36mhttps://nextjs.org/telemetry[39m
+
+[36mwait[39m  - compiling / (client and server)...
+[35mevent[39m - compiled client and server successfully in 8.6s (1366 modules)
+react-i18next:: You will need to pass in an i18next instance by using initReactI18next
+[36mwait[39m  - compiling /api/auth/[...nextauth] (client and server)...
+[35mevent[39m - compiled successfully in 151 ms (126 modules)
+[36mwait[39m  - compiling...
+[35mevent[39m - compiled successfully in 611 ms (1261 modules)
+[36mwait[39m  - compiling...
+[35mevent[39m - compiled successfully in 410 ms (1261 modules)
+[36mwait[39m  - compiling...
+[35mevent[39m - compiled client and server successfully in 706 ms (1366 modules)
+[36mwait[39m  - compiling...
+[35mevent[39m - compiled client and server successfully in 677 ms (1366 modules)
+[36mwait[39m  - compiling...
+[35mevent[39m - compiled successfully in 381 ms (1261 modules)
+[36mwait[39m  - compiling...
+[35mevent[39m - compiled successfully in 342 ms (1261 modules)
+[36mwait[39m  - compiling...
+[35mevent[39m - compiled successfully in 322 ms (1261 modules)
+[36mwait[39m  - compiling...
+[35mevent[39m - compiled client and server successfully in 1332 ms (1366 modules)
+[36mwait[39m  - compiling...
+[35mevent[39m - compiled client and server successfully in 700 ms (1368 modules)
+[36mwait[39m  - compiling...
+[35mevent[39m - compiled client and server successfully in 780 ms (1368 modules)
+[36mwait[39m  - compiling...
+[35mevent[39m - compiled successfully in 481 ms (1262 modules)
+[36mwait[39m  - compiling /api/auth/[...nextauth] (client and server)...
+[35mevent[39m - compiled successfully in 56 ms (127 modules)
